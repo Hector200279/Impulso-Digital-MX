@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ImpulsoDigital MX – Páginas Web para Negocios Locales</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: #f8f7f4; color: #0b1628; overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(11,22,40,0.97);
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6%; height: 70px;
+  border-bottom: 1px solid rgba(245,166,35,0.15);
+}
+.nav-logo { font-family: 'Poppins', sans-serif; font-size: 1.45rem; font-weight: 800; color: #fff; }
+.nav-logo span { color: #f5a623; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: #94a3b8; text-decoration: none; font-size: 0.88rem; font-weight: 600; font-family: 'Poppins', sans-serif; transition: color .2s; }
+.nav-links a:hover { color: #f5a623; }
+.nav-cta { background: #f5a623; color: #0b1628; padding: 10px 22px; border-radius: 50px; font-weight: 800; font-size: 0.85rem; text-decoration: none; font-family: 'Poppins', sans-serif; transition: all .2s; }
+.nav-cta:hover { background: #ffc44d; }
+@media(max-width:700px){ .nav-links { display:none; } }
+
+/* HERO */
+#hero {
+  min-height: 100vh;
+  background: #0b1628;
+  display: flex; align-items: center;
+  padding: 120px 6% 80px;
+  position: relative; overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(245,166,35,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(245,166,35,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.hero-glow {
+  position: absolute; top: -10%; right: -5%; width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,166,35,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 680px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(245,166,35,0.12); border: 1px solid rgba(245,166,35,0.3);
+  color: #f5a623; padding: 7px 18px; border-radius: 50px;
+  font-size: 0.78rem; font-weight: 700; font-family: 'Poppins', sans-serif;
+  margin-bottom: 26px; letter-spacing: 0.5px;
+  animation: fadeUp .6s ease both;
+}
+.hero-h1 {
+  font-family: 'Poppins', sans-serif; font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 800; color: #fff; line-height: 1.12; letter-spacing: -1px;
+  margin-bottom: 20px;
+  animation: fadeUp .6s .1s ease both;
+}
+.hero-h1 em { font-style: normal; color: #f5a623; }
+.hero-sub {
+  font-size: 1.1rem; color: #94a3b8; line-height: 1.7; max-width: 540px;
+  margin-bottom: 38px; animation: fadeUp .6s .2s ease both;
+}
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp .6s .3s ease both; }
+.btn-amber {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #f5a623; color: #0b1628; padding: 15px 30px; border-radius: 50px;
+  font-weight: 800; font-size: 0.95rem; text-decoration: none;
+  font-family: 'Poppins', sans-serif; transition: all .25s;
+  box-shadow: 0 8px 28px rgba(245,166,35,0.35);
+}
+.btn-amber:hover { background: #ffc44d; transform: translateY(-2px); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: #fff; padding: 15px 30px; border-radius: 50px;
+  font-weight: 700; font-size: 0.95rem; text-decoration: none;
+  font-family: 'Poppins', sans-serif; border: 2px solid rgba(255,255,255,0.2);
+  transition: all .25s;
+}
+.btn-ghost:hover { border-color: #f5a623; color: #f5a623; }
+.hero-stats { display: flex; gap: 36px; margin-top: 56px; flex-wrap: wrap; animation: fadeUp .6s .4s ease both; }
+.stat-num { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: #f5a623; display: block; }
+.stat-lbl { font-size: 0.78rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+
+/* TRUST BAR */
+#trust { background: #0f1e35; padding: 24px 6%; border-top: 1px solid rgba(245,166,35,0.1); border-bottom: 1px solid rgba(245,166,35,0.1); }
+.trust-row { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 9px; color: #94a3b8; font-size: 0.83rem; font-weight: 600; font-family: 'Poppins', sans-serif; }
+
+/* SECTIONS */
+section { padding: 90px 6%; }
+.sec-tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.25);
+  color: #f5a623; padding: 5px 15px; border-radius: 50px;
+  font-size: 0.72rem; font-weight: 700; font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 14px;
+}
+.sec-title { font-family: 'Poppins', sans-serif; font-size: clamp(1.75rem, 3.2vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -.5px; margin-bottom: 12px; }
+.sec-sub { font-size: 0.97rem; color: #64748b; line-height: 1.7; max-width: 540px; margin-bottom: 46px; }
+
+/* SERVICES */
+#services { background: #f8f7f4; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 20px; }
+.svc-card {
+  background: #fff; border: 1.5px solid #e2e8f0; border-radius: 16px;
+  padding: 26px; transition: all .3s; cursor: default; position: relative; overflow: hidden;
+}
+.svc-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: #f5a623; transform: scaleX(0); transition: transform .3s; transform-origin: left;
+}
+.svc-card:hover { transform: translateY(-5px); box-shadow: 0 18px 48px rgba(11,22,40,0.09); border-color: rgba(245,166,35,0.3); }
+.svc-card:hover::before { transform: scaleX(1); }
+.svc-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; font-size: 1.6rem; }
+.svc-title { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 800; color: #0b1628; margin-bottom: 12px; }
+.svc-list { list-style: none; }
+.svc-list li { font-size: 0.85rem; color: #64748b; padding: 3.5px 0; display: flex; align-items: center; gap: 7px; font-weight: 600; }
+.svc-list li::before { content: '›'; color: #f5a623; font-weight: 800; font-size: 1rem; }
+.svc-card.extra { border-color: rgba(245,166,35,0.4); background: linear-gradient(135deg, #fff 60%, rgba(245,166,35,0.05)); }
+
+/* HOW IT WORKS */
+#how { background: #0b1628; }
+#how .sec-title { color: #fff; }
+#how .sec-sub { color: #94a3b8; }
+.steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; }
+.step-card { background: #132038; border: 1px solid rgba(245,166,35,0.15); border-radius: 16px; padding: 28px 22px; text-align: center; transition: border-color .3s; }
+.step-card:hover { border-color: rgba(245,166,35,0.5); }
+.step-num { font-family: 'Poppins', sans-serif; font-size: 3rem; font-weight: 800; color: rgba(245,166,35,0.1); line-height: 1; margin-bottom: 10px; }
+.step-ico { font-size: 1.9rem; margin-bottom: 12px; display: block; }
+.step-title { font-family: 'Poppins', sans-serif; font-size: 0.97rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+.step-desc { font-size: 0.83rem; color: #94a3b8; line-height: 1.6; }
+
+/* PRICING */
+#pricing { background: #f8f7f4; }
+.pricing-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 22px; max-width: 960px; }
+.plan-card { background: #fff; border: 2px solid #e2e8f0; border-radius: 20px; padding: 34px 28px; position: relative; transition: all .3s; }
+.plan-card.popular { border-color: #f5a623; background: #0b1628; transform: scale(1.04); box-shadow: 0 28px 70px rgba(11,22,40,0.22); }
+.plan-card:not(.popular):hover { transform: translateY(-5px); box-shadow: 0 18px 48px rgba(11,22,40,0.08); }
+.popular-tag {
+  position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+  background: #f5a623; color: #0b1628; font-family: 'Poppins', sans-serif;
+  font-size: 0.68rem; font-weight: 800; padding: 4px 16px; border-radius: 50px;
+  text-transform: uppercase; letter-spacing: .5px; white-space: nowrap;
+}
+.plan-tier { font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #f5a623; margin-bottom: 6px; }
+.plan-name { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 800; color: #0b1628; margin-bottom: 4px; }
+.plan-card.popular .plan-name { color: #fff; }
+.plan-price { display: flex; align-items: flex-end; gap: 3px; margin: 16px 0; }
+.plan-cur { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: #f5a623; padding-bottom: 4px; }
+.plan-num { font-family: 'Poppins', sans-serif; font-size: 3rem; font-weight: 800; line-height: 1; color: #0b1628; }
+.plan-card.popular .plan-num { color: #fff; }
+.plan-period { font-size: 0.82rem; color: #94a3b8; padding-bottom: 5px; }
+.plan-desc { font-size: 0.85rem; color: #64748b; margin-bottom: 20px; line-height: 1.5; }
+.plan-card.popular .plan-desc { color: #94a3b8; }
+.plan-feats { list-style: none; margin-bottom: 26px; }
+.plan-feats li { display: flex; align-items: flex-start; gap: 9px; font-size: 0.85rem; padding: 5.5px 0; color: #475569; border-bottom: 1px solid #f1f5f9; font-weight: 600; }
+.plan-card.popular .plan-feats li { color: #94a3b8; border-color: rgba(255,255,255,0.07); }
+.plan-feats li:last-child { border: none; }
+.fc { color: #22c55e; flex-shrink: 0; margin-top: 1px; }
+.plan-btn {
+  display: block; width: 100%; background: #f5a623; color: #0b1628;
+  border: none; border-radius: 12px; padding: 15px; font-size: 0.92rem;
+  font-weight: 800; font-family: 'Poppins', sans-serif; cursor: pointer;
+  transition: all .25s; text-align: center; text-decoration: none;
+}
+.plan-btn:hover { background: #ffc44d; transform: translateY(-2px); box-shadow: 0 8px 22px rgba(245,166,35,0.38); }
+.plan-btn.outline { background: transparent; border: 2px solid #e2e8f0; color: #0b1628; }
+.plan-btn.outline:hover { border-color: #f5a623; color: #f5a623; background: rgba(245,166,35,0.05); }
+
+/* MAINTENANCE */
+#maintenance { background: #0b1628; }
+#maintenance .sec-title { color: #fff; }
+#maintenance .sec-sub { color: #94a3b8; }
+.maint-box {
+  background: #132038; border: 1px solid rgba(245,166,35,0.2); border-radius: 20px;
+  padding: 38px; max-width: 700px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center;
+}
+.maint-badge-green {
+  display: inline-block; background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3);
+  color: #22c55e; font-family: 'Poppins', sans-serif; font-size: 0.68rem; font-weight: 800;
+  padding: 4px 13px; border-radius: 50px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 14px;
+}
+.maint-title { font-family: 'Poppins', sans-serif; font-size: 1.7rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.maint-price-row { display: flex; align-items: flex-end; gap: 4px; margin: 14px 0; }
+.maint-big { font-family: 'Poppins', sans-serif; font-size: 2.8rem; font-weight: 800; color: #f5a623; line-height: 1; }
+.maint-per { font-size: 0.83rem; color: #94a3b8; padding-bottom: 5px; }
+.maint-desc { font-size: 0.88rem; color: #94a3b8; line-height: 1.6; margin-bottom: 18px; }
+.maint-list { list-style: none; }
+.maint-list li { display: flex; align-items: center; gap: 9px; color: #94a3b8; font-size: 0.85rem; font-weight: 600; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.maint-list li:last-child { border: none; }
+.gc { color: #22c55e; }
+@media(max-width:640px){ .maint-box { grid-template-columns: 1fr; gap: 22px; } }
+
+/* PAYMENT METHODS */
+#payment { background: #f8f7f4; }
+.pay-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 36px; }
+.pay-card {
+  background: #fff; border: 2px solid #e2e8f0; border-radius: 16px;
+  padding: 26px; cursor: pointer; transition: all .25s; position: relative;
+}
+.pay-card:hover { border-color: #f5a623; box-shadow: 0 10px 28px rgba(245,166,35,0.1); }
+.pay-card.sel { border-color: #f5a623; background: rgba(245,166,35,0.03); }
+.pay-card.sel::after {
+  content: '✓'; position: absolute; top: 13px; right: 13px;
+  width: 24px; height: 24px; background: #f5a623; color: #0b1628;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 800; line-height: 24px; text-align: center;
+}
+.pay-ico { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+.pay-name { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 800; color: #0b1628; margin-bottom: 5px; }
+.pay-desc { font-size: 0.82rem; color: #64748b; line-height: 1.5; }
+.pay-logos { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.plb { font-family: 'Poppins', sans-serif; font-size: 0.63rem; font-weight: 800; padding: 3px 9px; border-radius: 5px; color: #fff; letter-spacing: .5px; }
+.proceed-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #0b1628; color: #fff; padding: 17px 38px; border-radius: 50px;
+  font-weight: 800; font-size: 1rem; border: none; cursor: pointer;
+  font-family: 'Poppins', sans-serif; transition: all .25s;
+  box-shadow: 0 8px 28px rgba(11,22,40,0.22);
+}
+.proceed-btn:hover { background: #132038; transform: translateY(-3px); }
+.proceed-btn:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+.pay-secure { display: flex; align-items: center; gap: 7px; margin-top: 14px; font-size: 0.78rem; color: #94a3b8; font-weight: 600; }
+
+/* TESTIMONIALS */
+#testimonials { background: #fff; }
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 22px; }
+.testi-card { background: #f8f7f4; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 26px; transition: transform .3s; }
+.testi-card:hover { transform: translateY(-4px); }
+.stars { color: #f5a623; font-size: 1rem; margin-bottom: 12px; }
+.testi-text { font-size: 0.9rem; color: #475569; line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+.testi-author { display: flex; align-items: center; gap: 11px; }
+.testi-av { width: 42px; height: 42px; border-radius: 50%; background: #f5a623; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 0.95rem; color: #0b1628; flex-shrink: 0; }
+.testi-name { font-family: 'Poppins', sans-serif; font-size: 0.88rem; font-weight: 800; color: #0b1628; }
+.testi-biz { font-size: 0.75rem; color: #94a3b8; font-weight: 600; }
+
+/* FAQ */
+#faq { background: #f8f7f4; }
+.faq-wrap { max-width: 680px; }
+.faq-item { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 12px; margin-bottom: 10px; overflow: hidden; transition: border-color .2s; }
+.faq-item.open { border-color: #f5a623; }
+.faq-q { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 0.92rem; font-weight: 700; color: #0b1628; gap: 12px; }
+.faq-arr { width: 26px; height: 26px; background: #f8f7f4; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; transition: transform .3s; color: #f5a623; flex-shrink: 0; }
+.faq-item.open .faq-arr { transform: rotate(180deg); background: #f5a623; color: #0b1628; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease; padding: 0 22px; font-size: 0.86rem; color: #64748b; line-height: 1.7; }
+.faq-item.open .faq-a { max-height: 200px; padding: 0 22px 18px; }
+
+/* CONTACT */
+#contact { background: #0b1628; }
+#contact .sec-title { color: #fff; }
+#contact .sec-sub { color: #94a3b8; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+@media(max-width:860px){ .contact-grid { grid-template-columns: 1fr; gap: 34px; } }
+.cinfo-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; }
+.cinfo-ico { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.cinfo-label { font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 3px; }
+.cinfo-val { font-family: 'Poppins', sans-serif; font-size: 0.97rem; font-weight: 700; color: #fff; }
+.wapp-btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: #25d366; color: #fff; padding: 14px 26px; border-radius: 50px;
+  font-weight: 800; font-size: 0.88rem; text-decoration: none;
+  font-family: 'Poppins', sans-serif; margin-top: 6px; transition: all .25s;
+  box-shadow: 0 6px 18px rgba(37,211,102,0.28);
+}
+.wapp-btn:hover { background: #1ebe5b; transform: translateY(-2px); }
+.cform { background: #132038; border: 1px solid rgba(245,166,35,0.15); border-radius: 20px; padding: 32px; }
+.flabel { display: block; font-family: 'Poppins', sans-serif; font-size: 0.75rem; font-weight: 700; color: #94a3b8; margin-bottom: 6px; letter-spacing: .5px; text-transform: uppercase; }
+.finput {
+  width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; padding: 12px 15px; color: #fff;
+  font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color .2s;
+  margin-bottom: 16px;
+}
+.finput:focus { border-color: #f5a623; }
+.finput::placeholder { color: #475569; }
+textarea.finput { resize: vertical; min-height: 100px; }
+.fsubmit { width: 100%; background: #f5a623; color: #0b1628; border: none; border-radius: 12px; padding: 15px; font-size: 0.92rem; font-weight: 800; font-family: 'Poppins', sans-serif; cursor: pointer; transition: all .25s; }
+.fsubmit:hover { background: #ffc44d; box-shadow: 0 8px 22px rgba(245,166,35,0.38); }
+
+/* FOOTER */
+footer { background: #060e1c; padding: 36px 6%; text-align: center; border-top: 1px solid rgba(245,166,35,0.1); }
+.foot-logo { font-family: 'Poppins', sans-serif; font-size: 1.35rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+.foot-logo span { color: #f5a623; }
+.foot-links { display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; margin: 14px 0; }
+.foot-links a { color: #475569; text-decoration: none; font-size: 0.8rem; transition: color .2s; font-weight: 600; }
+.foot-links a:hover { color: #f5a623; }
+.foot-copy { font-size: 0.78rem; color: #334155; }
+
+/* PAYMENT PAGE */
+#pp-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: #f8f7f4; overflow-y: auto;
+}
+.pp-inner { max-width: 500px; margin: 0 auto; padding: 80px 24px 60px; }
+.pp-back { display: inline-flex; align-items: center; gap: 7px; color: #64748b; font-size: 0.83rem; font-weight: 700; cursor: pointer; margin-bottom: 26px; font-family: 'Poppins', sans-serif; background: none; border: none; transition: color .2s; }
+.pp-back:hover { color: #0b1628; }
+.pp-title { font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 800; color: #0b1628; margin-bottom: 5px; }
+.pp-sub { font-size: 0.88rem; color: #64748b; margin-bottom: 28px; }
+.pp-summary { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 22px; margin-bottom: 22px; }
+.pp-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; font-weight: 600; color: #475569; }
+.pp-row:last-child { border: none; }
+.pp-row.total { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 800; color: #0b1628; padding-top: 12px; margin-top: 3px; }
+.pp-row.total span:last-child { color: #f5a623; }
+.pp-form-box { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 26px; }
+.pp-form-title { font-family: 'Poppins', sans-serif; font-size: 0.97rem; font-weight: 800; color: #0b1628; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+.visa-tag { background: #1a1f71; color: #fff; font-family: 'Poppins', sans-serif; font-size: 0.65rem; font-weight: 800; padding: 3px 9px; border-radius: 5px; letter-spacing: .5px; }
+.card-brands { display: flex; gap: 7px; margin-bottom: 18px; }
+.pp-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+.pp-label { display: block; font-family: 'Poppins', sans-serif; font-size: 0.73rem; font-weight: 700; color: #64748b; margin-bottom: 5px; letter-spacing: .5px; text-transform: uppercase; }
+.pp-input { width: 100%; background: #f8f7f4; border: 1px solid #e2e8f0; border-radius: 9px; padding: 11px 14px; color: #0b1628; font-family: 'Inter', sans-serif; font-size: 0.88rem; outline: none; transition: border-color .2s; margin-bottom: 14px; }
+.pp-input:focus { border-color: #f5a623; }
+.pp-pay-btn { width: 100%; background: #f5a623; color: #0b1628; border: none; border-radius: 12px; padding: 17px; font-size: 0.97rem; font-weight: 800; font-family: 'Poppins', sans-serif; cursor: pointer; transition: all .25s; margin-top: 20px; }
+.pp-pay-btn:hover { background: #ffc44d; box-shadow: 0 8px 22px rgba(245,166,35,0.38); }
+.pp-sec { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 13px; font-size: 0.76rem; color: #94a3b8; font-weight: 600; }
+
+/* SUCCESS */
+#success-overlay { display: none; position: fixed; inset: 0; z-index: 99999; background: rgba(11,22,40,0.9); align-items: center; justify-content: center; }
+.success-box { background: #fff; border-radius: 22px; padding: 44px 36px; max-width: 400px; width: 90%; text-align: center; }
+.success-emoji { font-size: 3.2rem; margin-bottom: 14px; }
+.success-title { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 800; color: #0b1628; margin-bottom: 10px; }
+.success-sub { font-size: 0.88rem; color: #64748b; line-height: 1.7; margin-bottom: 24px; }
+.success-note { background: #f8f7f4; border-radius: 10px; padding: 14px; margin-bottom: 22px; font-size: 0.82rem; color: #475569; font-weight: 600; }
+.success-btn { background: #f5a623; color: #0b1628; border: none; border-radius: 12px; padding: 13px 30px; font-family: 'Poppins', sans-serif; font-size: 0.92rem; font-weight: 800; cursor: pointer; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.svc-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav>
+<div class="nav-logo">Impulso<span>Digital</span>MX</div>
+<ul class="nav-links">
+<li><a href="#services">Servicios</a></li>
+<li><a href="#pricing">Precios</a></li>
+<li><a href="#testimonials">Opiniones</a></li>
+<li><a href="#contact">Contacto</a></li>
+</ul>
+<a class="nav-cta" href="#pricing">Ver Planes</a>
+</nav>
+<!-- HERO -->
+<section id="hero"><video autoplay="True" loop="True" muted="True" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.25;"><source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4"/></video>
+<div class="hero-grid"></div>
+<div class="hero-glow"></div>
+<div class="hero-content">
+<div class="hero-badge">🚀 Páginas Web Profesionales desde $500 MXN</div>
+<h1 class="hero-h1">Haz Crecer tu Negocio con una <em>Página Web Profesional</em></h1>
+<p class="hero-sub">Deja de perder clientes: lleva tu negocio a internet hoy mismo. Más clientes, más ventas, más presencia — sin complicaciones.</p>
+<div class="hero-btns">
+<a class="btn-amber" href="#pricing">Ver Planes y Precios →</a>
+<a class="btn-ghost" href="#services">¿Para qué negocio?</a>
+</div>
+<div class="hero-stats">
+<div><span class="stat-num">+80%</span><span class="stat-lbl">Negocios se buscan en Google</span></div>
+<div><span class="stat-num">48h</span><span class="stat-lbl">Entrega rápida</span></div>
+<div><span class="stat-num">100%</span><span class="stat-lbl">Satisfacción garantizada</span></div>
+</div>
+</div>
+</section>
+<!-- TRUST BAR -->
+<div id="trust">
+<div class="trust-row">
+<div class="trust-item">⚡ Entrega en 48 horas</div>
+<div class="trust-item">📱 100% Responsive</div>
+<div class="trust-item">🔒 Sitio Seguro SSL</div>
+<div class="trust-item">🇲🇽 Hecho en México</div>
+<div class="trust-item">💬 Soporte por WhatsApp</div>
+</div>
+</div>
+<!-- SERVICES -->
+<section id="services">
+<div class="reveal">
+<div class="sec-tag">✦ Sectores</div>
+<h2 class="sec-title">Diseñamos para <em style="color:#f5a623">todo tipo</em> de negocios</h2>
+<p class="sec-sub">Si tienes un negocio local, te creamos la página perfecta. Sin importar el giro, te ponemos en internet.</p>
+</div>
+<div class="services-grid">
+<div class="svc-card reveal">
+<div class="svc-icon" style="background:#EFF6FF;">🏥</div>
+<div class="svc-title">Salud y Bienestar</div>
+<ul class="svc-list">
+<li>Dentistas</li>
+<li>Consultorios médicos</li>
+<li>Psicólogos</li>
+<li>Nutriólogos</li>
+<li>Fisioterapeutas</li>
+</ul>
+</div>
+<div class="svc-card reveal">
+<div class="svc-icon" style="background:#FFF7ED;">🏠</div>
+<div class="svc-title">Hogar y Servicios Técnicos</div>
+<ul class="svc-list">
+<li>Electricistas ⚡</li>
+<li>Plomeros</li>
+<li>Carpinteros</li>
+<li>Herreros</li>
+<li>Técnicos en aire acondicionado</li>
+</ul>
+</div>
+<div class="svc-card reveal">
+<div class="svc-icon" style="background:#F0FDF4;">🚗</div>
+<div class="svc-title">Automotriz</div>
+<ul class="svc-list">
+<li>Lavado de autos</li>
+<li>Venta de autos usados</li>
+<li>Refaccionarias</li>
+<li>Hojalatería y pintura</li>
+</ul>
+</div>
+<div class="svc-card reveal">
+<div class="svc-icon" style="background:#FDF4FF;">🛍️</div>
+<div class="svc-title">Comercio Local</div>
+<ul class="svc-list">
+<li>Tiendas de ropa</li>
+<li>Papelerías</li>
+<li>Ferreterías</li>
+<li>Abarrotes</li>
+</ul>
+</div>
+<div class="svc-card reveal">
+<div class="svc-icon" style="background:#FFF1F2;">🍽️</div>
+<div class="svc-title">Alimentos y Bebidas</div>
+<ul class="svc-list">
+<li>Cafeterías ☕</li>
+<li>Panaderías</li>
+<li>Pastelerías</li>
+<li>Food trucks</li>
+</ul>
+</div>
+<div class="svc-card reveal">
+<div class="svc-icon" style="background:#FEFCE8;">🎉</div>
+<div class="svc-title">Eventos</div>
+<ul class="svc-list">
+<li>Salones de fiestas</li>
+<li>DJs</li>
+<li>Fotógrafos</li>
+<li>Organizadores de eventos</li>
+</ul>
+</div>
+<div class="svc-card reveal">
+<div class="svc-icon" style="background:#F0FDF4;">🐶</div>
+<div class="svc-title">Mascotas</div>
+<ul class="svc-list">
+<li>Veterinarias</li>
+<li>Estéticas caninas</li>
+<li>Guarderías para perros</li>
+</ul>
+</div>
+<div class="svc-card reveal">
+<div class="svc-icon" style="background:#EFF6FF;">🎓</div>
+<div class="svc-title">Educación</div>
+<ul class="svc-list">
+<li>Escuelas pequeñas</li>
+<li>Cursos</li>
+<li>Clases particulares</li>
+</ul>
+</div>
+<div class="svc-card extra reveal">
+<div class="svc-icon" style="background:rgba(245,166,35,0.12);">💼</div>
+<div class="svc-title" style="color:#f5a623;">Servicio Adicional</div>
+<ul class="svc-list">
+<li>Publicación y promoción del negocio</li>
+<li>Optimización para aparecer en Google</li>
+<li>Presencia digital completa</li>
+</ul>
+<div style="margin-top:14px;background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.3);border-radius:8px;padding:8px 12px;font-size:0.76rem;color:#92400e;font-weight:700;font-family:'Syne',sans-serif;">⭐ Disponible en plan Premium</div>
+</div>
+</div>
+</section>
+<!-- HOW IT WORKS -->
+<section id="how">
+<div class="reveal">
+<div class="sec-tag">✦ Proceso</div>
+<h2 class="sec-title">Tu página lista en <em style="color:#f5a623">3 pasos</em></h2>
+<p class="sec-sub">Sin complicaciones, sin tecnicismos. Así de fácil.</p>
+</div>
+<div class="steps-grid">
+<div class="step-card reveal">
+<div class="step-num">01</div>
+<span class="step-ico">💬</span>
+<div class="step-title">Me contactas por WhatsApp</div>
+<p class="step-desc">Me dices el tipo de negocio, los colores, tus servicios y tus datos. Sin formularios complicados.</p>
+</div>
+<div class="step-card reveal">
+<div class="step-num">02</div>
+<span class="step-ico">🎯</span>
+<div class="step-title">Diseño tu página</div>
+<p class="step-desc">En menos de 48 horas te mando una propuesta de diseño profesional para aprobarla o pedir cambios.</p>
+</div>
+<div class="step-card reveal">
+<div class="step-num">03</div>
+<span class="step-ico">🌐</span>
+<div class="step-title">¡Tu negocio en internet!</div>
+<p class="step-desc">Tu página queda publicada y lista para que tus clientes te encuentren en Google y redes sociales.</p>
+</div>
+<div class="step-card reveal">
+<div class="step-num">04</div>
+<span class="step-ico">📊</span>
+<div class="step-title">Más clientes, más ventas</div>
+<p class="step-desc">Con soporte continuo tu negocio siempre luce profesional y actualizado en internet.</p>
+</div>
+</div>
+</section>
+<!-- PRICING -->
+<section id="pricing">
+<div class="reveal">
+<div class="sec-tag">✦ Planes</div>
+<h2 class="sec-title">Elige el plan <em style="color:#f5a623">perfecto</em> para ti</h2>
+<p class="sec-sub">Precios accesibles para negocios reales. Sin contratos ni sorpresas.</p>
+</div>
+<div class="pricing-wrap">
+<div class="plan-card reveal">
+<div class="plan-tier">Básico</div>
+<div class="plan-name">Presencia Digital</div>
+<div class="plan-price"><span class="plan-cur">$</span><span class="plan-num">500</span><span class="plan-period"> MXN / único</span></div>
+<p class="plan-desc">Ideal para comenzar: una página simple, rápida y profesional que te pone en el mapa.</p>
+<ul class="plan-feats">
+<li><span class="fc">✔</span> 1 página completa</li>
+<li><span class="fc">✔</span> Botón de WhatsApp directo</li>
+<li><span class="fc">✔</span> Diseño profesional</li>
+<li><span class="fc">✔</span> Responsive (celular)</li>
+<li><span class="fc">✔</span> Entrega en 48 horas</li>
+<li><span class="fc">✔</span> Soporte 7 días post-entrega</li>
+</ul>
+<button class="plan-btn outline" onclick="openPayment('Básico – Presencia Digital', 500)">Seleccionar Plan</button>
+</div>
+<div class="plan-card popular reveal">
+<div class="popular-tag">⭐ Más Popular</div>
+<div class="plan-tier">Estándar</div>
+<div class="plan-name">Negocio Pro</div>
+<div class="plan-price"><span class="plan-cur">$</span><span class="plan-num">1,000</span><span class="plan-period"> MXN / único</span></div>
+<p class="plan-desc">El favorito: diseño cuidado, imágenes profesionales y múltiples secciones.</p>
+<ul class="plan-feats">
+<li><span class="fc">✔</span> Todo lo del plan Básico</li>
+<li><span class="fc">✔</span> Diseño personalizado</li>
+<li><span class="fc">✔</span> Imágenes profesionales</li>
+<li><span class="fc">✔</span> Múltiples secciones</li>
+<li><span class="fc">✔</span> Galería de fotos / servicios</li>
+<li><span class="fc">✔</span> Mapa de Google Maps</li>
+<li><span class="fc">✔</span> Soporte 15 días post-entrega</li>
+</ul>
+<button class="plan-btn" onclick="openPayment('Estándar – Negocio Pro', 1000)">Seleccionar Plan</button>
+</div>
+<div class="plan-card reveal">
+<div class="plan-tier">Premium</div>
+<div class="plan-name">Marca Completa</div>
+<div class="plan-price"><span class="plan-cur">$</span><span class="plan-num">2,000</span><span class="plan-period"> MXN / único</span></div>
+<p class="plan-desc">Para negocios que quieren destacar: formulario, SEO local y optimización móvil avanzada.</p>
+<ul class="plan-feats">
+<li><span class="fc">✔</span> Todo lo del plan Estándar</li>
+<li><span class="fc">✔</span> Formulario de contacto</li>
+<li><span class="fc">✔</span> Optimización móvil avanzada</li>
+<li><span class="fc">✔</span> SEO local básico</li>
+<li><span class="fc">✔</span> Integración redes sociales</li>
+<li><span class="fc">✔</span> Certificado SSL incluido</li>
+<li><span class="fc">✔</span> Soporte 30 días post-entrega</li>
+</ul>
+<button class="plan-btn outline" onclick="openPayment('Premium – Marca Completa', 2000)">Seleccionar Plan</button>
+</div>
+</div>
+</section>
+<!-- MAINTENANCE -->
+<section id="maintenance">
+<div class="reveal">
+<div class="sec-tag">✦ Opcional</div>
+<h2 class="sec-title">Plan de <em style="color:#f5a623">Mantenimiento</em> Mensual</h2>
+<p class="sec-sub">Mantén tu página actualizada y funcionando siempre. Sin compromisos.</p>
+</div>
+<div class="maint-box reveal">
+<div>
+<div class="maint-badge-green">✓ Plan Opcional</div>
+<div class="maint-title">Mantenimiento &amp; Soporte</div>
+<div class="maint-price-row"><span class="maint-big">$200</span><span class="maint-per"> MXN / mes</span></div>
+<p class="maint-desc">Nosotros nos encargamos de que tu página siempre esté perfecta.</p>
+<button class="plan-btn" onclick="openPayment('Mantenimiento Mensual', 200)" style="max-width:230px;">Agregar al Plan →</button>
+</div>
+<div>
+<ul class="maint-list">
+<li><span class="gc">✔</span> Actualizaciones de contenido</li>
+<li><span class="gc">✔</span> Cambios de fotos y texto</li>
+<li><span class="gc">✔</span> Soporte técnico prioritario</li>
+<li><span class="gc">✔</span> Revisión mensual de velocidad</li>
+<li><span class="gc">✔</span> Monitoreo de disponibilidad</li>
+<li><span class="gc">✔</span> Respaldo mensual del sitio</li>
+<li><span class="gc">✔</span> Cancela cuando quieras</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- PAYMENT METHODS -->
+<section id="payment">
+<div class="reveal">
+<div class="sec-tag">✦ Métodos de Pago</div>
+<h2 class="sec-title">Paga como <em style="color:#f5a623">más te convenga</em></h2>
+<p class="sec-sub">Selecciona tu método preferido y te redirigimos para completar tu compra de forma segura.</p>
+</div>
+<div class="pay-grid reveal" id="payGrid">
+<div class="pay-card" onclick="selectPay(this,'Tarjeta de Crédito/Débito')">
+<span class="pay-ico">💳</span>
+<div class="pay-name">Tarjeta Crédito / Débito</div>
+<p class="pay-desc">Pago inmediato y seguro con tu tarjeta bancaria.</p>
+<div class="pay-logos">
+<span class="plb" style="background:#1a1f71">VISA</span>
+<span class="plb" style="background:#eb001b">Mastercard</span>
+<span class="plb" style="background:#007bc1">AMEX</span>
+</div>
+</div>
+<div class="pay-card" onclick="selectPay(this,'OXXO Pay')">
+<span class="pay-ico">🏪</span>
+<div class="pay-name">OXXO Pay</div>
+<p class="pay-desc">Genera una referencia y paga en efectivo en cualquier OXXO.</p>
+<div class="pay-logos"><span class="plb" style="background:#dd1133">OXXO</span></div>
+</div>
+<div class="pay-card" onclick="selectPay(this,'Transferencia SPEI')">
+<span class="pay-ico">🏦</span>
+<div class="pay-name">Transferencia SPEI</div>
+<p class="pay-desc">Transferencia bancaria directa. Rápida y sin comisiones adicionales.</p>
+<div class="pay-logos"><span class="plb" style="background:#0077b6">SPEI</span></div>
+</div>
+</div>
+<div class="reveal">
+<button class="proceed-btn" disabled="" id="proceedBtn" onclick="goToPayPage()">🔒 Continuar con el Pago →</button>
+<div class="pay-secure">🔒 Pagos procesados de forma segura. Tu información está <span style="color:#22c55e;margin-left:3px">100% protegida.</span></div>
+</div>
+</section>
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+<div class="reveal">
+<div class="sec-tag">✦ Testimonios</div>
+<h2 class="sec-title">Negocios que ya <em style="color:#f5a623">crecieron</em> con nosotros</h2>
+<p class="sec-sub">Más de 50 negocios locales ya tienen su presencia en internet.</p>
+</div>
+<div class="testi-grid">
+<div class="testi-card reveal">
+<div class="stars">★★★★★</div>
+<p class="testi-text">"Desde que tengo mi página me llegan más clientes por Google. Ya no dependo solo del boca a boca. Valió cada peso."</p>
+<div class="testi-author">
+<div class="testi-av">MA</div>
+<div><div class="testi-name">María Antonieta R.</div><div class="testi-biz">Estética "Glamour Total" – Toluca</div></div>
+</div>
+</div>
+<div class="testi-card reveal">
+<div class="stars">★★★★★</div>
+<p class="testi-text">"Super rápido, en dos días ya tenía mi página lista. Me hicieron el botón de WhatsApp y ahora recibo pedidos directo al celular."</p>
+<div class="testi-author">
+<div class="testi-av">JL</div>
+<div><div class="testi-name">José Luis M.</div><div class="testi-biz">Tacos El Güero – Metepec</div></div>
+</div>
+</div>
+<div class="testi-card reveal">
+<div class="stars">★★★★★</div>
+<p class="testi-text">"Pensé que una página web era carísima. Me sorprendió el precio y la calidad. El mantenimiento mensual también es muy accesible."</p>
+<div class="testi-author">
+<div class="testi-av">CF</div>
+<div><div class="testi-name">Carlos F.</div><div class="testi-biz">Taller Mecánico "Los Primos" – Lerma</div></div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ -->
+<section id="faq">
+<div class="reveal">
+<div class="sec-tag">✦ Preguntas Frecuentes</div>
+<h2 class="sec-title">Resolvemos tus <em style="color:#f5a623">dudas</em></h2>
+</div>
+<div class="faq-wrap reveal">
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">¿Cuánto tiempo tarda en estar lista mi página?<span class="faq-arr">▼</span></div>
+<div class="faq-a">La mayoría de las páginas están listas en 48 horas hábiles después de que nos proporcionas la información y el contenido de tu negocio.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">¿Necesito saber de computadoras o tecnología?<span class="faq-arr">▼</span></div>
+<div class="faq-a">Para nada. Solo necesitas darnos el nombre de tu negocio, tus servicios, fotos, datos de contacto, ubicación y horarios de atención. El resto lo hacemos nosotros.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">¿El precio incluye dominio y hospedaje?<span class="faq-arr">▼</span></div>
+<div class="faq-a">El plan incluye el diseño y desarrollo. El dominio y hospedaje tienen un costo anual adicional muy accesible (desde $400 MXN/año). Te asesoramos en todo el proceso.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">¿Puedo cambiar el contenido después?<span class="faq-arr">▼</span></div>
+<div class="faq-a">Sí. Con el plan de mantenimiento mensual puedes solicitar cambios de texto, fotos, precios y más cuando quieras. También puedes solicitar actualizaciones de forma independiente.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">¿Mi página se va a ver bien en el celular?<span class="faq-arr">▼</span></div>
+<div class="faq-a">Absolutamente. Todos nuestros diseños son 100% responsivos, se adaptan a cualquier pantalla: celular, tablet o computadora.</div>
+</div>
+</div>
+</section>
+<!-- CONTACT -->
+<section id="contact">
+<div class="contact-grid">
+<div class="reveal">
+<div class="sec-tag">✦ Contacto</div>
+<h2 class="sec-title">¿Listo para <em style="color:#f5a623">empezar</em>?</h2>
+<p class="sec-sub">Escríbenos y en menos de 1 hora te respondemos. Sin compromiso.</p>
+<div class="cinfo-item">
+<div class="cinfo-ico" style="background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.3);">
+<svg fill="#25d366" height="22" viewbox="0 0 24 24" width="22"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+</div>
+<div><div class="cinfo-label">WhatsApp</div><div class="cinfo-val">Disponible vía WhatsApp</div></div>
+</div>
+<div class="cinfo-item">
+<div class="cinfo-ico" style="background:rgba(0,120,212,0.12);border:1px solid rgba(0,120,212,0.3);">
+<svg fill="none" height="22" viewbox="0 0 24 24" width="22"><rect fill="#0078D4" height="16" rx="2" width="20" x="2" y="4"></rect><path d="M2 8l10 7 10-7" fill="none" stroke="white" stroke-linecap="round" stroke-width="1.8"></path></svg>
+</div>
+<div><div class="cinfo-label">Correo Outlook</div><div class="cinfo-val">impulsodigital.mx@outlook.com</div></div>
+</div>
+<div class="cinfo-item">
+<div class="cinfo-ico" style="background:rgba(234,67,53,0.1);border:1px solid rgba(234,67,53,0.25);">
+<svg height="22" viewbox="0 0 24 24" width="22"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#EA4335"></path><circle cx="12" cy="9" fill="white" r="2.5"></circle></svg>
+</div>
+<div><div class="cinfo-label">Ubicación</div><div class="cinfo-val">Toluca, Estado de México</div></div>
+</div>
+<a class="wapp-btn" href="https://wa.me/527228253560" target="_blank">
+<svg fill="white" height="18" viewbox="0 0 24 24" width="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+        Escríbenos por WhatsApp
+      </a>
+</div>
+<div class="cform reveal">
+<div class="flabel" style="margin-bottom:0;font-size:.95rem;color:#94a3b8;font-family:'Syne',sans-serif;font-weight:800;margin-bottom:20px;">Cuéntanos sobre tu negocio</div>
+<label class="flabel">Tu Nombre</label>
+<input class="finput" placeholder="Ej. Juan García" type="text"/>
+<label class="flabel">Nombre de tu Negocio</label>
+<input class="finput" placeholder="Ej. Tacos El Güero" type="text"/>
+<label class="flabel">WhatsApp / Teléfono</label>
+<input class="finput" placeholder="+52 722 000 0000" type="tel"/>
+<label class="flabel">Giro del Negocio</label>
+<select class="finput" style="cursor:pointer">
+<option disabled="" selected="" value="">Selecciona una categoría</option>
+<option>Salud y Bienestar</option>
+<option>Hogar y Servicios Técnicos</option>
+<option>Automotriz</option>
+<option>Comercio Local</option>
+<option>Alimentos y Bebidas</option>
+<option>Eventos</option>
+<option>Mascotas</option>
+<option>Educación</option>
+<option>Otro</option>
+</select>
+<label class="flabel">¿Qué necesitas?</label>
+<textarea class="finput" placeholder="Cuéntame sobre tu negocio..."></textarea>
+<button class="fsubmit" onclick="submitForm(this)">Enviar Consulta Gratis →</button>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+<div class="foot-logo">Impulso<span>Digital</span>MX</div>
+<div class="foot-links">
+<a href="#hero">Inicio</a>
+<a href="#services">Servicios</a>
+<a href="#pricing">Precios</a>
+<a href="#maintenance">Mantenimiento</a>
+<a href="#testimonials">Opiniones</a>
+<a href="#contact">Contacto</a>
+</div>
+<p class="foot-copy">© 2025 ImpulsoDigitalMX · Páginas web para negocios locales · Toluca, Estado de México 🇲🇽</p>
+</footer>
+<!-- PAYMENT OVERLAY -->
+<div id="pp-overlay">
+<div class="pp-inner">
+<button class="pp-back" onclick="closePP()">← Volver al sitio</button>
+<div class="pp-title">Completar Pago</div>
+<p class="pp-sub">Estás a un paso de tener tu página web 🚀</p>
+<div class="pp-summary">
+<div class="pp-row"><span>Plan:</span><span id="pp-plan" style="font-weight:800;color:#0b1628">–</span></div>
+<div class="pp-row"><span>Método:</span><span id="pp-method" style="font-weight:800;color:#0b1628">–</span></div>
+<div class="pp-row"><span>IVA incluido:</span><span>✓</span></div>
+<div class="pp-row total"><span>Total:</span><span id="pp-total">$0 MXN</span></div>
+</div>
+<!-- Card form -->
+<div class="pp-form-box" id="form-card">
+<div class="pp-form-title">Datos de Tarjeta <span class="visa-tag">VISA</span></div>
+<div class="card-brands">
+<span class="plb" style="background:#1a1f71">VISA</span>
+<span class="plb" style="background:#eb001b">MC</span>
+<span class="plb" style="background:#007bc1">AMEX</span>
+</div>
+<label class="pp-label">Nombre en la tarjeta</label>
+<input class="pp-input" placeholder="Como aparece en tu tarjeta" type="text"/>
+<label class="pp-label">Número de tarjeta</label>
+<input class="pp-input" maxlength="19" oninput="fmtCard(this)" placeholder="0000  0000  0000  0000" type="text"/>
+<div class="pp-2col">
+<div><label class="pp-label">Vencimiento</label><input class="pp-input" maxlength="7" placeholder="MM / AA" type="text"/></div>
+<div><label class="pp-label">CVV</label><input class="pp-input" maxlength="4" placeholder="•••" type="text"/></div>
+</div>
+<button class="pp-pay-btn" onclick="confirmPay()">🔒 Pagar Ahora →</button>
+<div class="pp-sec">🔒 Pago seguro encriptado.</div>
+</div>
+<!-- OXXO form -->
+<div class="pp-form-box" id="form-oxxo" style="display:none">
+<div class="pp-form-title">Pago en OXXO</div>
+<p style="font-size:.85rem;color:#64748b;margin-bottom:14px;line-height:1.6;">Generaremos una referencia única. Llévala a cualquier tienda OXXO y paga en efectivo.</p>
+<label class="pp-label">Tu correo electrónico</label>
+<input class="pp-input" placeholder="para enviarte la referencia" type="email"/>
+<button class="pp-pay-btn" onclick="confirmPay()">Generar Referencia OXXO →</button>
+<div class="pp-sec">🔒 Referencia válida 72 horas.</div>
+</div>
+<!-- SPEI form -->
+<div class="pp-form-box" id="form-spei" style="display:none">
+<div class="pp-form-title">Transferencia SPEI</div>
+<p style="font-size:.85rem;color:#64748b;margin-bottom:14px;line-height:1.6;">Te enviaremos los datos bancarios al confirmar. Servicio activo en menos de 1 hora hábil.</p>
+<label class="pp-label">Tu correo electrónico</label>
+<input class="pp-input" placeholder="para enviarte los datos bancarios" type="email"/>
+<button class="pp-pay-btn" onclick="confirmPay()">Ver Datos Bancarios →</button>
+<div class="pp-sec">🔒 Datos bancarios verificados.</div>
+</div>
+</div>
+</div>
+<!-- SUCCESS -->
+<div id="success-overlay">
+<div class="success-box">
+<div class="success-emoji">🎉</div>
+<div class="success-title">¡Pago Recibido!</div>
+<p class="success-sub">Gracias por tu confianza. Te contactaremos en menos de 1 hora por WhatsApp para comenzar.</p>
+<div class="success-note">📱 Revisa tu WhatsApp y correo — ¡ya estamos en contacto!</div>
+<button class="success-btn" onclick="closeSuccess()">Volver al Inicio</button>
+</div>
+</div>
+<script>
+// Reveal on scroll
+const revEls = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 70);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+revEls.forEach(el => obs.observe(el));
+
+// FAQ
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Payment method selection
+let selectedMethod = null;
+function selectPay(card, method) {
+  document.querySelectorAll('.pay-card').forEach(c => c.classList.remove('sel'));
+  card.classList.add('sel');
+  selectedMethod = method;
+  document.getElementById('proceedBtn').disabled = false;
+}
+
+// Current plan
+let curPlan = '', curAmount = 0;
+function openPayment(plan, amount) {
+  curPlan = plan; curAmount = amount;
+  document.getElementById('payment').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Go to payment page
+function goToPayPage() {
+  if (!selectedMethod) return;
+  document.getElementById('pp-plan').textContent = curPlan || 'Plan Personalizado';
+  document.getElementById('pp-method').textContent = selectedMethod;
+  document.getElementById('pp-total').textContent = '$' + Number(curAmount).toLocaleString('es-MX') + ' MXN';
+  document.getElementById('form-card').style.display = 'none';
+  document.getElementById('form-oxxo').style.display = 'none';
+  document.getElementById('form-spei').style.display = 'none';
+  if (selectedMethod === 'Tarjeta de Crédito/Débito') document.getElementById('form-card').style.display = 'block';
+  else if (selectedMethod === 'OXXO Pay') document.getElementById('form-oxxo').style.display = 'block';
+  else document.getElementById('form-spei').style.display = 'block';
+  document.getElementById('pp-overlay').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  window.scrollTo(0, 0);
+}
+
+function closePP() {
+  document.getElementById('pp-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function fmtCard(inp) {
+  let v = inp.value.replace(/\D/g,'').substring(0,16);
+  inp.value = v.replace(/(.{4})/g,'$1  ').trim();
+}
+
+function confirmPay() {
+  document.getElementById('pp-overlay').style.display = 'none';
+  const sov = document.getElementById('success-overlay');
+  sov.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSuccess() {
+  document.getElementById('success-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function submitForm(btn) {
+  const orig = btn.textContent;
+  btn.textContent = '✓ ¡Mensaje Enviado!';
+  btn.style.background = '#22c55e';
+  btn.disabled = true;
+  setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.disabled = false; }, 3500);
+}
+</script>
+</body>
+</html>
